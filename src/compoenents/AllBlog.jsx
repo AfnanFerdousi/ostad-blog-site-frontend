@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BsSearch } from "react-icons/bs"
+import BlogCard from "./BlogCard";
 
 const AllBlog = () => {
     const [blogs, setBlogs] = useState([]);
@@ -32,6 +33,15 @@ const AllBlog = () => {
                         onChange={(e) => setSearchText(e.target.value)}
                     />
                     <button className="btn btn-primary"><BsSearch/></button>
+                </div>
+
+                <div className="mt-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
+                        {
+                            blogs?.map(blog => <BlogCard key={blog._id} blog={blog}></BlogCard>)
+                        }
+                    </div>
+
                 </div>
 
       </div>

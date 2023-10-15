@@ -13,7 +13,8 @@ const Signup = () => {
         try{
             const res = await axios.post('http://localhost:5000/api/v1/user/signup', data)
             if (res.data.status === "success") {
-                alert("success")
+                alert("success");
+                window.location.href = "/blogs";
             }
 
         } catch (err) {
