@@ -15,6 +15,7 @@ const LoginComp = () => {
             const res = await axios.post("http://localhost:5000/api/v1/user/login", data); // Change the URL to your login API endpoint
             if (res.data.status === "success") {
                 Cookies.set("token", res.data.data.accessToken);
+                Cookies.set("email", data?.email);
                 alert("Login successful");
                 window.location.href = "/blogs";
 
