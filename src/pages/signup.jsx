@@ -1,10 +1,10 @@
-import Signup from "../compoenents/SignUp";
+import Register from "../compoenents/Register";
 
 
 const SignUp = () => {
     return (
         <div>
-            <Signup/>
+            <Register />
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useForm } from "react-hook-form"
 
-const Signup = () => {
+const Register = () => {
     const {
         register,
         handleSubmit,
@@ -10,7 +10,7 @@ const Signup = () => {
 
     const onSignup = async (data) => {
         console.log(data)
-        try{
+        try {
             const res = await axios.post('http://localhost:5000/api/v1/user/signup', data)
             if (res.data.status === "success") {
                 alert("success");
@@ -20,7 +20,7 @@ const Signup = () => {
         } catch (err) {
             console.log(err)
         }
-        
+
     }
     return (
         <div>
@@ -41,7 +41,7 @@ const Signup = () => {
                                     placeholder="Name"
                                     className="input input-bordered"
                                     {...register("name", {
-                                       required: true 
+                                        required: true
                                     })}
                                 />
                                 {errors.name && <span className="text-small text-red-500 pt-2 text-mulish">Name is required</span>}
@@ -56,7 +56,7 @@ const Signup = () => {
                                     className="input input-bordered"
                                     {...register("email", {
                                         required: true
-                                    })}/>
+                                    })} />
                                 {errors.email && <span className="text-small text-red-500 pt-2 text-mulish">Email is required</span>}
                             </div>
                             <div className="form-control">
@@ -66,8 +66,8 @@ const Signup = () => {
                                 <input
                                     type="text"
                                     placeholder="phone number"
-                                    className="input input-bordered" 
-                                     {...register("phone", {
+                                    className="input input-bordered"
+                                    {...register("phone", {
                                         required: true
                                     })} />
                                 {errors.phone && <span className="text-small text-red-500 pt-2 text-mulish">Email is required</span>}
@@ -95,7 +95,7 @@ const Signup = () => {
                                     placeholder="password"
                                     className="input input-bordered"
                                     {...register("password", {
-                                    required: true
+                                        required: true
                                     })} />
                                 {errors.password && <span className="text-small text-red-500 pt-2 text-mulish">Profile image is required</span>}
                             </div>
@@ -111,4 +111,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default Register;
