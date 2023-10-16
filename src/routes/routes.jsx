@@ -7,19 +7,22 @@ import Blogs from "../pages/blogs";
 import SignUp from "../pages/signup";
 import Login from "../pages/login";
 import SingleBlog from "../pages/singleBlog";
+import DashboardHome from "../pages/dasboardHome";
+import CreateBlog from './../pages/CreateBlog';
+import DashboardSidebar from "../layouts/DashboardSidebar";
 
 const router = createBrowserRouter([
-  {
-        path: "/", 
-        element: <MainLayout/>,
+    {
+        path: "/",
+        element: <MainLayout />,
         children: [
             {
                 index: true,
-                element: <Home/>,
-          },
+                element: <Home />,
+            },
             {
                 path: "/blogs",
-                element: <Blogs/>,
+                element: <Blogs />,
             },
             {
                 path: "/signup",
@@ -28,15 +31,30 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login />,
-            }, 
+            },
             {
                 path: "/blog/:id",
                 element: <SingleBlog />,
+            },
+            {
+                path: "/dashboard",
+                element: (
+                    <DashboardSidebar>
+                        <DashboardHome/>
+                    </DashboardSidebar>
+                ),
+            },
+            {
+                path: "/dashboard/create-blog",
+                element: (
+                    <DashboardSidebar>
+                        <CreateBlog />
+                    </DashboardSidebar>
+                ),
             }
-          
-      ]
-  }
-  
+        ]
+    }
+
 ]);
 
 export default router;

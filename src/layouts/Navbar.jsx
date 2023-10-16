@@ -1,7 +1,15 @@
+import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
+    const accessToken = Cookies.get("token");
+    const logout = () => {
+        Cookies.remove("token");
+        Cookies.remove("email");
+        window.location.href = "/";
+    };
+
     return (
         <div className="navbar bg-base-200  px-8 py-4">
             <div className="navbar-start">
@@ -26,7 +34,15 @@ const Navbar = () => {
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 font-mulish text-xl font-semibold">
                     <li><Link to="/blogs">Blogs</Link></li>
-                    <li><Link to="/login">Login</Link></li>
+                    {accessToken ? (
+                        <>
+                            <li><Link to="/dashboard">Dashboard</Link></li>
+                            <li><button className="btn btn-primary font-semibold text-lg my-auto capitalize" onClick={logout}>Logout</button></li>
+                        </>
+                    ) : (
+                            <li><Link to="/login">Login</Link></li>
+                    )}
+                   
                 </ul>
             </div>
         </div>
